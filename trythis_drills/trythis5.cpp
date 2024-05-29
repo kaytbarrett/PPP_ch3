@@ -13,12 +13,10 @@ int main () {
     int numberToSquare;
     cin >> numberToSquare;
     int squaredNumber = 0;
-    int currentNumber = 0;
     int i = 0;
 
     while (i < numberToSquare) {
-        squaredNumber = currentNumber + numberToSquare;
-        currentNumber = squaredNumber;
+        squaredNumber += numberToSquare;
         i++;
     }
 
