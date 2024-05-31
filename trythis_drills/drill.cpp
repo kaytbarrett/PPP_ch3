@@ -13,9 +13,17 @@ int main () {
 
     while(cin>>num1>>num2) {
         if (num1 < num2) {
-            cout << "The smaller number is: " << num1 << "\t" << "The larger number is: " << num2 <<endl;
+            if((num2 - num1) < 0.01){
+                cout << "The smaller number is: " << num1 << "\t" << "The larger number is: " << num2 << "  (These numbers are almost equal)"<<endl;
+            } else {
+                cout << "The smaller number is: " << num1 << "\t" << "The larger number is: " << num2 <<endl;
+            }
         } else if (num2 < num1) {
-            cout << "The smaller number is: " << num2 << "\t" << "The larger number is: " << num1 <<endl;
+            if((num1 - num2) < 0.01){
+                cout << "The smaller number is: " << num2 << "\t" << "The larger number is: " << num1 << "  (These numbers are almost equal)"<<endl;
+            } else {
+                cout << "The smaller number is: " << num2 << "\t" << "The larger number is: " << num1 <<endl;
+            }        
         } else {
             cout << num1 << " and " << num2 << " are the same number" << endl;
         }
