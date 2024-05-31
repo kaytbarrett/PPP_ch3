@@ -7,12 +7,18 @@ using namespace std;
 
 int main () {
 
-    cout << "Please enter in three pairs of numbers (ex: 1 2 3 4 5 6 |):" <<endl;
-    int num1;
-    int num2;
+    cout << "Please enter in three pairs of whole numbers (ex: 1 2 3 4 5 6 |):" <<endl;
+    double num1;
+    double num2;
 
     while(cin>>num1>>num2) {
-        cout << num1 << "\t" << num2 << endl;
+        if (num1 < num2) {
+            cout << "The smaller number is: " << num1 << "\t" << "The larger number is: " << num2 <<endl;
+        } else if (num2 < num1) {
+            cout << "The smaller number is: " << num2 << "\t" << "The larger number is: " << num1 <<endl;
+        } else {
+            cout << num1 << " and " << num2 << " are the same number" << endl;
+        }
     }
 
     return 0;
