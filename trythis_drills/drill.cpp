@@ -2,6 +2,8 @@
 // Test each steps by entering at least three pairs of values - more values is better
 
 #include <iostream> 
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -29,23 +31,77 @@ int main () {
     //     }
     // }
 
-    cout << "\nPlease enter in some numbers:" <<endl;
-    double num;
-    double largestNum = 0;
-    double smallestNum = 10000000;
+    // cout << "\nPlease enter in some numbers:" <<endl;
+    // double num;
+    // double largestNum = 0;
+    // double smallestNum = 10000000;
 
-    while (cin>>num){
-        if( num > largestNum && num < smallestNum){
-            largestNum = num;
-            smallestNum = num;
-        } else if (num > largestNum ) {
-            cout << num << " is the largest number so far" << endl;
-            largestNum = num;
-        } else if (num < smallestNum) {
-            cout << num << " is the smallest number so far" << endl;
-            smallestNum = num;
+    // while (cin>>num){
+    //     if( num > largestNum && num < smallestNum){
+    //         largestNum = num;
+    //         smallestNum = num;
+    //     } else if (num > largestNum ) {
+    //         cout << num << " is the largest number so far" << endl;
+    //         largestNum = num;
+    //     } else if (num < smallestNum) {
+    //         cout << num << " is the smallest number so far" << endl;
+    //         smallestNum = num;
+    //     }
+    // }
+
+
+    cout << "\nPlease enter a number and a unit (only units cm, m, in, ft; ex: 12m):" << endl;
+    string numStr;
+    vector<double> v;
+
+    while(cin>>numStr){
+
+        size_t pos = 0;
+        while(pos < numStr.length() && isdigit(numStr[pos])){
+            pos++;
+        }
+
+        if (pos == 0 || pos == numStr.length()){
+            cout << "Invalid input. Please enter an number followed by a unit.";
+        }
+
+        string numberPart = numStr.substr(0, pos);
+        double num = stod(numberPart);
+        cout << "num: " << num << endl;
+
+        string unit = numStr.substr(pos);
+        cout << "unit: " << unit << endl;
+
+        if (unit == "m" || unit == "cm" || unit == "in" || unit == "ft"){
+            if (unit == "cm"){
+                num *= 0.01;
+                v.push_back(num);
+            } else if (unit == "in"){
+                num *= 0.0254;
+                v.push_back(num);
+            } else if (unit == "ft"){
+                num *= 0.3048;
+                v.push_back(num);
+            } else if (unit == "m"){
+                v.push_back(num);
+            }
+        } else {
+            cout << unit << " is not a valid unit.";
+            return 1;
         }
     }
+
+    sort(v.begin(), v.end());
+
+    cout << "The smallest number entered converted to meters is: " << v[0] << endl;
+    cout << "The largest number entered converted to meters is: " << v[v.size() - 1] <<endl;
+
+    double total = 0;;
+    for (int i = 0; i < v.size(); i++){
+        total += v[i];
+    }
+
+    cout << "The total is " << total << " meters." << endl;
 
     return 0;
 }
