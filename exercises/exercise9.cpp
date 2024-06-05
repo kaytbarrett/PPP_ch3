@@ -10,8 +10,8 @@ using namespace std;
 
 int main () {
 
-    long long current = 1;
-    long long totalGrains = 1;
+    double current = 1;
+    double totalGrains = 1;
     int squares = 1;
     int squaresForThousand = 0;
     int squaresForMil = 0;
@@ -36,6 +36,7 @@ int main () {
     cout << "The squares required for a minimum of a thousand grains is " << squaresForThousand << endl;
     cout << "The squares required for a minimum of a million grains is " << squaresForMil << endl;
     cout << "The squares required for a minimum of a billion grains is " << squaresForBil << endl;
-
+    cout << "The total grains are " << totalGrains << endl;
+    
     return 0;
 }
