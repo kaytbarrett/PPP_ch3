@@ -15,31 +15,40 @@
 
 using namespace std;
 
-
 int main(){
 
-    char response = 'y';
+    string name;
+    int score = 0;
     vector<string> names;
     vector<int> scores;
 
     do {
 
-        string name;
-        int score = 0;
-
         cout << "\nPlease enter a name followed by a score. Ex: Joe 17\n";
         cin >> name >> score; 
 
-        names.push_back(name);
-        scores.push_back(score);
+        bool isSameName = false;
 
-        cout << "\nDo you want to enter another name and score? (y/n)\n";
-        cin >> response;
+        for(int i = 0; i < names.size(); i++){
+            if (name == names[i]){
+                isSameName = true;
+                break;
+            }
+        }
 
-    } while (response == 'y');
+        if (name != "NoName" && score != 0){
+            if (!isSameName){
+                names.push_back(name);
+                scores.push_back(score);
+            } else {
+                cout << "This name has already been entered.\n";
+            }
+        }
+        
+    } while (name != "NoName" && score != '0');
 
     cout << "\n";
-    
+
     for (int i = 0; i < names.size(); i++){
         cout << names[i] << " " << scores[i] <<"\n";
     }
